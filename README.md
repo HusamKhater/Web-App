@@ -20,8 +20,12 @@ Two users can share there data privately in a private channel, no other third us
 
 Client side implemented using HTML, CSS, Bootstrap and Angular for user interaction.
 
-
 Server side implementer using Apache tomcat.
+
 Apache derby DataBase.
+
+Client side project exist in the Client branch.
+Server side project exist in the Server branch.
+
 
 For any information, feel free to ask me.
