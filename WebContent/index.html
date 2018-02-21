@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>MyWebProject</title>
+
+
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="lib/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+
+<script src="lib/angular.min.js" ></script>
+<link rel="stylesheet" href="lib/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="lib/styles.css">
+
+
+
+
+
+<!-- 
+
+	this is the web socket javaScript code, we are defining the standard function, connecting it our angular functions in order to modify the 
+	DOM according to the arrived message
+	on sending the message from the angualr, we are setting the send message evt to the channel name that the sender is typing on it
+	the on message function gets the sender channel name, and behave according to it, 
+		if the current channel name of me is the same as the given message(the channel name of the sender), this means that me and the sender in the
+		same channel, so i just have to change my messages in the given channel
+		if the current channel name of me differ from the arrived message( the sender channel name) i have to refresh the left nav(that contain
+		my public and private channel) so i can get all the indicators of unread and mentions messages
+
+ -->
+
+<script type="text/javascript">
+            
+            function connect(username) {
+            	
+            	var wsUri = "ws://"+window.location.host+"/MyWebProject/"+username;
+                websocket = new WebSocket(wsUri);
+                
+                websocket.onopen = function(evt) {
+                };
+                
+                
+                websocket.onmessage = function(evt) {
+                	
+                 	angular.element(document.getElementById('myCon')).scope().unReadChanging(evt.data);// we have to call the modify
+    
+                };
+                
+                websocket.onerror = function(evt) {
+                };
+                
+                websocket.onclose = function(evt) {
+                	websocket = null;
+                };
+                
+                
+            }
+            
+            function sendMessage(channelName) {
+            	if (websocket != null){
+               		 websocket.send(channelName);
+                }
+            	chatTextInputtt.value = "";
+            }
+         
+            
+            function logout(){
+            	websocket.close();
+                
+            }
+           
+        </script>
+
+
+
+
+
+
+</head>
+
+
+
+<!-- 
+
+	in my way to change the UI once logging in, i choose to use the ng-hide and ng-show methods
+	at the first time the user used my App, he'll meet the login page, there the user can or login using an existing user name and password
+	or he can register and make he's new user name 
+	after the logging in or registration, the user will moved to the second interface,
+	in the second interface the user can use this web to communicate with friends in two ways, public or private discussions, and i'll explain the 
+	second interface and what is containing in my comments down :)
+
+ -->
+
+<body>
+
+	<div id="myCon" ng-app="registrationApp" ng-controller="registrationController">
+	
+<!-- 	the first UI, the logging and registration page, the "first" angular variable holds if i'm in the first or second interface -->
+		
+		<div ng-hide="first">
+		
+		
+<!-- 		the up navbar, contain the web name and its logo, and two input to fill the user name and password 
+			and a button that allow the user to get into the App -->
+			<nav class="navbar navbar-relative-top navbar-custom">
+				<div class="container">
+					<div class="navbar-header">
+						
+						<div id="HeaderLogoDiv">	<img id="LOGOIMG" src="lib/images/puzzlesLogo2.png" alt="logoimg">	</div>
+						<p id="webHeader" class="navbar-brand">Puzzles</p>
+					</div>
+					
+					<div>
+					<div id="navbar" class="navbar-collapse collapse">
+						<form id="loginForm" class="navbar-form navbar-right">
+							<div class="form-group">
+								<input id="usernameText" type="text" placeholder="Username" class="form-control" autocomplete="off"
+									ng-model="userL" />
+							</div>
+							<div class="form-group">
+								<input id="passwordText" type="password" placeholder="Password"
+									class="form-control" ng-model="passL" />
+							</div>
+							<button class="btn btn-success" ng-click="go()">Sign in</button>
+						</form>
+
+<!-- 				hidden message, alerts only if the user inserts a wrong data -->
+					<div id="loginErrorFeedback">
+						<b>username or password is incorrect</b>
+					</div>
+					
+					</div>
+					</div>
+					<!--/.navbar-collapse -->
+				</div>
+			</nav>
+			
+			
+<!-- 			this is the main page area, it contain all the required data that the user should insert in order to create a new user
+				it contain the new username input, password input, nickname input, image url input and the users discription input-->
+			
+			<div class="container" id="conT">
+				<div class="row">
+					<div class="col-md-7"></div>
+					<div class="col-md-4">
+						<h2>Sign Up</h2>
+						<hr class="hrloginpage">
+						<div class="row">
+							<div class="col-md-12">
+								<div class="form-group">
+									<input type="text" name="username" id="username" autocomplete="off"
+										class="form-control" placeholder="Username (required)"
+										ng-model="username" maxlength="10"/>
+								</div>
+								<div id="required_field_username"><b>this username exists, try another</b>  </div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<div class="form-group">
+									<input type="text" name="nickname" id="nickname" autocomplete="off"
+										class="form-control" placeholder="Nickname (required)"
+										ng-model="nickname" maxlength="20"/>
+								</div>
+								<div id="required_field_nickname"> <b>this nickname is used, try another</b> </div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<div class="form-group">
+									<input type="password" name="password" id="password"
+										class="form-control" placeholder="Password (required)"
+										ng-model="password" maxlength="8"/>
+								</div>
+								<div id="password_req"></div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<div class="form-group">
+									<input name="img" id="img" class="form-control"
+										placeholder="Image URL (optional)" ng-model="imgUrl" maxlength="1000"/>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<div class="form-group">
+									<textarea name="desc" id="desc" class="form-control"
+										placeholder="Description (optional)" maxlength="50"
+										ng-model="description"></textarea>
+								</div>
+								<div id="desc_feedback"></div>
+								<div id="required_field"> <b>you must fill required field(s)</b> </div>
+							</div>
+						</div>
+						<hr class="hrloginpage">
+						<div class="row">
+							<div class="col-md-6">
+								<input type="submit" name="regBtn" id="regBtn" value="Register"
+									class="btn btn-block btn-lg" ng-click="submit()" />
+							</div>
+						</div>
+					</div>
+				</div>
+				
+<!-- 				the footer of the web App  -->
+				<div class="row">
+					<div class="container">
+						<footer>
+							<hr class="hrloginpage" />
+							<p>2017 Web Programming Project.</p>
+						</footer>
+					</div>
+					<!-- /container -->
+				</div>
+			</div>
+		</div>
+
+
+<!-- 	the second interface, here the user can do a lot of useful communication with anyone the want, in two offered ways,
+		or by public channels with many channel subscribers
+		or by private channel with only one user
+		discussions, replies, searches for new channels to subscribe   -->
+		<div id="myContainer" class="HomePage" ng-show="first">
+
+
+<!-- 	this is the left bar of the UI, it contain the web name at the top, under it we can see the public channels that the user subscribed to,
+		and uner them we can see the private channels that the user opened with only one friend -->
+		
+			<div id="myContainerSideBar">
+				
+<!-- 			this is he web App name area -->
+				<ul class="mySideNav" id="mySiteName">
+					<li class="siteName">Puzzles</li>
+				</ul>
+				
+<!-- 			this is the public channels area, in this area we can see the public channel name in the left of each row,
+				a garbage button that allow us to unsubscribe this channel, @button indicate if we have any mentioned comment in this channel,
+				if the @ button appears that means that we have a mention on this channel,
+				at the last, in the right side of this row, we can see indicator that tell us how many unread messages we have in this channel -->
+				<ul class="mySideNav" id="publicChannels">
+					<li>public channels
+						<div id="AddChannel">
+							<button id="addIcon"></button>
+						</div>
+					</li>
+					
+					<ul ng-repeat="x in myPublicChannels | orderBy:'ChannelName'"
+						class="mySideNav" id="Channels">
+						<li class="thenameofthechannel" id="mychannelname"
+							ng-click="ModifyChannelName(x.ChannelName)"><a
+							id="mychannelnam">{{x.ChannelName }}</a>
+						</li>
+
+						<li id="allChannelButtons">
+								 <button id="deleteIcon" ng-click="TryUnsup(x.ChannelName)">
+								 
+									<span id="hiddenName">{{x.ChannelName }}</span>
+								</button>
+								
+								<div id="mentionIcon" ng-show="x.Mention"><span id="hiddenName"> @</span> </div>
+								
+								<div  id="unreadIcon" ng-show="x.Unread"> <b>{{x.Unread}} </b> </div>
+								
+								
+								
+								
+								
+						</li>
+					</ul>
+				</ul>
+				
+<!--  			this is the area if the private channels, it contain the same data of the public channels row, accept for the channel name,
+				in this area we show the user the name of the other user how i'm connecting with -->
+				<ul class="mySideNav" id="privateChannels">
+					<li>private channels
+					</li>
+					
+					
+					<ul ng-repeat="x in myPrivateChannels | orderBy:'ChannelName'"
+						class="mySideNav" id="Channels">
+						<li class="thenameofthechannel" id="mychannelname"
+							ng-click="ModifyChannelName2(x)"><a
+							id="mychannelnam">{{x}}</a>
+							</li>
+<!-- 							<li> {{myPrivateChannels2[$index].Unread }} || {{myPrivateChannels2[$index].Mention}} </li> -->
+						<li id="allChannelButtons"><span>
+								<button id="deleteIcon" ng-click="TryUnsup2(x)">
+									<span id="hiddenName">{{x}}</span>					
+								</button>
+								
+								<div id="mentionIcon" ng-show="myPrivateChannels2[$index].Mention"><span id="hiddenName"> @</span> </div>
+								
+								<div  id="unreadIcon" ng-show="myPrivateChannels2[$index].Unread"> <b>{{myPrivateChannels2[$index].Unread}} </b> </div>
+								
+						</span></li>
+					</ul>
+				
+				</ul>
+			</div>
+			
+			
+<!-- 		this is the header of the UI, it contain a search bar, where the user can search for unsubscribed channel to subscribe
+			the user can search channels with two options, or by the channel name, or by a user nickname, the result will be the channels 
+			where the user with the given nickname subscribed to -->
+			<div id="MyHeader">
+				<div class="mySearchBar">
+					<div id="SearchBar">
+						
+							<input id="mySearchInput" type="text" autocomplete="off"
+								class="form-control input-lg" placeholder="Search"
+								ng-model="query" ng-change="search()" ng-click="search()"/>
+						
+					</div>
+					<div id="SearchIcon">
+						<img src="lib/images/SearchIcon.png">
+					</div>
+				</div>
+				<div class="myAccount">
+					<div id="accountPicture">
+						<img id="UserImgUrll" src="" alt="userpic">
+					</div>
+					<div id="accountNickname"><b>{{userL}}</b></div>
+					<div id="accountLogout">
+						<button ng-click="LogOut()"></button>
+					</div>
+				</div>
+			</div>
+			
+			
+<!-- 		this is the greeting wall paper, its visible once the user logging in, hidden once the user reading a channel discussions
+			and visible once the user exit this channel(the user isn't reading any channel messages) -->
+			
+			<div id="greetingDiv">
+				<div id="LogoDiv"> <img id="LOGOIMG" src="lib/images/puzzlesLogo2.png" alt="logoimg">	</div>
+				<div id="WelcomeDiv"> Welcome </div>
+				<div id="SiteNameDivG"> To Puzzles</div>
+				<div id="IntroductionDiv"> a place where you can have all your 
+				public and private discussions</div>
+				<div id="EnjoyYourStay"> Enjoy Your Stay</div>
+				<div id="EmojiDiv">
+				<img id="smilee" src="lib/images/smile.png" alt="smileee">
+				</div>
+			</div>
+			
+			
+<!-- 		this is the chat area of any channel, it contain the newest 10 messages of the current channel name, each message represent the 
+			writer nickname, the image of the writer, the time stamp when the message written, the message content, and a reply button.
+			on clicking on this button, we show the user the replies of this message  -->
+			<div id="mychatarea" >
+				
+				<div id="MyChatBox" class="container" onscroll="scrollingFunc()">
+				<span></span>
+				<div class="media" id="messageBox"
+						ng-repeat="m in finalMessages"
+						my-scroll-directive>
+						<div id="MessageItselfContainer">
+						<div class="media-left">
+							<img
+								ng-src={{m.ImageUrl}}
+								class="media-object" id="UserNamemsgImage"/>
+						</div>
+						
+						<div class="media-body">
+						<div id="MessageUserName">
+						<h4 class="media-heading">
+						<a ng-click="tryCreate(m.UserNickname)">
+						<b>{{ m.UserNickname }}</b>
+						</a>
+						</h4>
+						</div>
+						<div id="MessageTimeStamp">
+							{{ m.Timestamp }}
+						</div>
+						
+						</div>
+						
+						<div>
+						<button id="ReplyToMessageBtn"
+								ng-click="ModifyMessageId1(m.Id)"
+								title="reply"></button>
+						</div>
+						<div id="MessageContentDiv">{{ m.Content }}</div>
+						</div>
+						<br/>
+				
+				</div>
+				</div>
+				
+				<!-- END OF MY CHAT BOX -->
+				
+<!-- 			this is an input that allows the user to write his own message in this channel and to let the other channel subscriber
+				to share this message -->
+				<div id="MyChatText" class="input-group" class="col-md-12">
+					<form>
+						<input id="chatTextInputtt" name="username" type="text" autocomplete="off"
+							placeholder="Enter Message Here" ng-model="messageContent" 
+							maxlength="500"/><br />
+						<button  ng-click="writeMessage()" id="submitMsgText" ></button>
+					</form>
+				</div>
+			</div>
+		
+		
+		
+<!-- 		this is the creation channel box, visible on clicking in the + icon in the public channels head
+			for create a new channel we should enter the channel name, and the channel description,
+			we are checking wither the channel name is used or not, and allow the creation if there are no created channel with the given name  -->
+			<div id="CreateChannelBox">
+				<div id="ChannelName">
+					Channel Name:
+					<div id="insertName">
+						<input type="text" autocomplete="off" ng-model="publicChannelName" 
+						maxlength="30">
+					</div>
+				</div>
+				<div id="ChannelDescription">
+					Channel Description:
+					<div id="insertDesc">
+						<textarea ng-model="publicChannelDescription" maxlength="500"></textarea>
+					</div>
+				</div>
+				<div id="submitCreation">
+					<button class="ConfirmCreation" id="ConfirmingCreation"
+						ng-click="createChannel()">Create</button>
+					<span id="CancelCreation"><button>Cancel</button> </span>
+					<div id ="ChannelCreationAlert"></div>
+				</div>
+			</div>
+			
+	
+	
+	
+<!-- 		this is the search results bar, its visible once we write a search query, it contain the two options results,
+			searching by channel name, and searching by users nickname
+			its hidden on clicking in any other area in the UI
+			the search results contain a channel name, description, number of subscribers and an option to subscribe this channel  -->
+			<div id="divCheckBox2">
+				<div class="row" class="col-md-12" id = "TheSearchResult"
+					ng-repeat="x in searchResult2 | orderBy:'ChannelName'">
+					<div id="THE_Res"><b>Channel Name:</b> <span id="secondaryText">{{x.ChannelName}}</span>
+									  <br/>
+									  <b>Channel Description:</b> <span id="secondaryText">{{x.Description}}</span>
+									  <br/>
+									  <b>Number of Subscribers:</b> <span id="secondaryText">{{x.NumberOfSubscribers}}</span>
+									  <br/>
+										<span>
+										<button id="mySubscription"
+										ng-click="TrySub(x.ChannelName,x.Description)"></button>
+										</span>
+										<br/>
+				
+										<br/>
+					</div>
+				</div>
+				<div class="row" class="col-md-12" id="TheSearchResult"
+					ng-repeat="x in searchResult3 | orderBy:'ChannelName'">
+					<div id="THE_Res"><b>Channel Name:</b> <span id="secondaryText">{{x.ChannelName}}</span>
+									  <br/>
+									  <b>Channel Description:</b> <span id="secondaryText">{{x.Description}}</span>
+									  <br/>
+									  <b>Number of Subscribers:</b> <span id="secondaryText">{{x.NumberOfSubscribers}}</span>
+									  <br/>
+									  <span>
+										<button id="mySubscription" 
+										ng-click="TrySub(x.ChannelName,x.Description)"></button>
+										</span>
+									
+									<br/>
+									  <br/>
+					</div>
+				</div>
+				
+			</div>
+			
+			
+<!-- 		if there is no search results, we till the user that be showing him a fine message	 -->
+			<div id="emptySearchResult">
+				<div id="noSearchResult"> 
+					<img src="lib/images/SearchIcon2.png"> 
+					<div id="noSearchResultContent">
+					 No search results
+					</div>
+				</div>
+			</div>
+	
+<!-- 	on clicking in a channel to discuss, and on the time that we have no replies to show, in the left side of the UI
+		we show the user a data about the channel that the user clicked on, the channel name, description, number of subscribers,
+		option to unsubscribe -->
+		<div id="ChannelDescriptionDiv">
+			<div id="ChannelDescriptionDivContent"></div>
+		</div>
+		
+		
+			
+<!-- 	this is the area where we show the user the message's replies, it is setting in the left side of the UI
+		on clicking in a message we visible this box, with a header of threads, and a backward option, to return to the previous replies
+		this box contain the main message that we clicked on, under it we have all the replies on this message,
+		at the foot, we have a input that we allow the user to write a reply to this message
+		next to each reply, we have a button to allow the user to see the replies of this reply and write a reply on it too -->
+		<div id="replyArea">	
+			<div id="myReplyBox">
+				<div id="headerReply">
+					<div id="threadBox"> Threads </div>
+					<div id="threadBoxbtn"> 
+					<button id ="backwardButton" ng-click="BackwardReplies()"></button>
+					</div>
+				</div>
+
+				
+				<div id="mainMessages">						
+	 				<div id="replyingto_user" ><b>
+	 				<a ng-click="tryCreate(currentMessage.UserNickname)">{{ currentMessage.UserNickname }}</a>
+	 				</b> <span>{{ currentMessage.Timestamp }}</span></div>
+					<div id="replyingto_message">{{ currentMessage.Content }}</div>
+				</div>
+		
+				<div id="theReplies">
+				
+				
+				
+				
+					<div class="media" id="messageBox"
+						ng-repeat="r in myReply | orderBy:-'OredTimestamp'">
+						<div id="ReplyItselfContainer">
+						<div class="media-left">
+							<img
+								ng-src={{r.ImageUrl}}
+								class="media-object" id="UserNamerlyImage"/>
+						</div>
+						
+						<div class="media-body">
+						<div id="ReplyUserName">
+						<h5 class="media-heading">
+						<a ng-click="tryCreate(r.UserNickname)">
+						<b>{{ r.UserNickname }}</b>
+						</a>
+						</h5>
+						</div>
+						<div id="ReplyTimeStamp">
+							{{ r.Timestamp }}
+						</div>
+						</div>
+						
+						<div>
+						<button id="ReplyToReplyBtn"
+								ng-click="CanIReply(r.Id)"
+								title="reply"></button>
+						</div>
+						
+						<div id="ReplyContentDiv">{{ r.Content }}</div>
+						</div>
+						<br/>
+						
+				
+				</div>
+				</div>
+			
+				<div id="MyReplyText" class="input-group" class="col-md-12">
+					<form>
+						<input id="chatTextInputt" class="theReplyTextBox" name="username" type="text" autocomplete="off"
+							placeholder="Enter Reply Here" ng-model="replyContent" ng-click="putValue()"
+							 maxlength="500"/><br />
+						<button id="submitRlyText" ng-click="writeReply1()"></button>
+					</form>
+				</div>
+				
+
+
+			</div>
+		</div>
+	</div>
+
+
+
+<!--if the write of the message that we clicked on isn't subscriber to this channel any more, we hide its replies from the users 
+	by alerting them this alert  -->
+	<div id="cantReplyWhenNotSubscribe">
+	<b> Cannot reply, this user is no longer subscribed </b>
+	</div>
+
+
+	
+
+
+	<script type="text/javascript" src="js/index.js"></script>
+	<script type="text/javascript" src="js/index1.js"></script> 
+
+
+	
+</body>
+
+</html>

@@ -1,0 +1,1553 @@
+@CHARSET "ISO-8859-1";
+
+/******************************************************************************** START OF STYLES.CSS **************************************************************/
+
+
+/*************************************************************** The Start Of The Body Css Style ****************************************************************/
+
+
+body {
+	overflow-x: hidden;
+	background-repeat: no-repeat;
+	background-size: 100%;
+}
+
+/**************************************************************** The End Of The Body Css Style *************************************************8***************/
+
+
+
+/**************************************************************** The Start Of The Login Page Header Css Style **************************************************/
+
+
+#HeaderLogoDiv{		/*** style=ing of the logo in the first page ***/
+	position: fixed;
+	padding-left:0px;
+	padding-top:9px;
+	
+}
+
+#HeaderLogoDiv img{
+	height: 100px;
+	width: 100px;	
+}
+
+#webHeader {	/*** styling of the name of the site in the first page  ***/
+	font-size: 400%;
+	font-family: fantasy;
+	padding-top: 47px;
+	padding-left: 123px;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+
+
+
+.hrloginpage {	/*** hr styling ***/
+	border-color: #aacfb5;
+	opacity: 0.3;
+}
+
+/*** styling the buttons of the first page ***/
+
+.btn-success {
+	background-color: #c8c2ca;
+	border-color: #afabb1;
+}
+
+.btn-success:hover {
+	background-color: #afabb1;
+	border-color: #afabb1;
+}
+
+.btn-success:focus {
+	background-color: #afabb1;
+	border-color: #afabb1;
+	outline: none;
+}
+
+
+
+.btn-success:active {
+	background-color: #afabb1;
+	border-color: #afabb1;
+}
+
+
+				/*** styling all the text fields in the first page and all relevant alerts that follows when someone missing required fields ***/
+				/*** or writing wrong password etc.***/
+
+
+#passwordText{
+	float:left;
+}
+
+#moveplease{
+	
+	margin-left: 100.4%;	
+	margin-top: 3.85%;
+	
+}
+
+
+#loginForm{
+	float:left;
+}
+
+
+#regBtn {
+	background-color: #5c9f93;
+	border-color: #adadad;
+}
+
+#regBtn:hover {
+	background-color: #8ca8a3;
+}
+
+#regBtn:focus {
+	outline: none;
+}
+
+
+#required_field{
+	color:red;
+	display: none;
+}
+
+#required_field_username{
+	color:red;
+	display: none;
+}
+
+#required_field_nickname{
+	color:red;
+	display: none;
+}
+
+#loginErrorFeedback{
+	
+	display: none;
+	margin-top: 0%;
+	margin-left: 670px;
+	color: red;
+}
+
+
+#password_warning {
+	color: #d21616;
+}
+
+#desc_feedback {
+	color: #339966;
+}
+
+.navbar-custom {
+	color: #FFFFFF;
+	background-color: #4e324b;
+	height: 120px;
+}
+
+.navbar {
+	margin-bottom: 0;
+}
+
+#loginForm {
+	margin-top: 40px;
+}
+
+
+
+
+
+.row {
+	margin-left: 0px;
+	margin-right: 0px;
+}
+
+
+/********************************************************************* The End Of The Login Page Header Css Style *******************************************/
+
+
+
+/********************************************************************* The Start Of Navbar Css Style ********************************************************/
+
+/*** styling the side nav bar that contains all the channels and conatins all the buttons that every channel has ***/
+/**** two different kind of channels that has the same style, public and private, and also the buttons has the same style next to each channel****/
+
+#myContainer {
+	padding-left: 70px;
+	height: 100%
+}
+
+#myContainerSideBar {
+	margin-left: -250px;
+	left: 70px;
+	width: 250px;
+	background: #4e324b;
+	position: fixed;
+	height: 100%;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+
+#myContainerSideBar {
+	left: 70px;
+}
+
+#myContainer.HomePage {
+	padding-left: 250px;
+}
+
+#myContainerSideBar {
+	left: 250px;
+	width: 250px;
+}
+
+.mySideNav {
+	display: block;
+	float: left;
+	width: 250px;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+
+#mySiteName.mySideNav li {
+	color: #ab9ba3;
+	float: left;
+	text-decoration: none;
+	width: 250px;
+	background: #4e324b;
+	border-top: 1px solid #ab9ba3;
+	border-bottom: 5px solid #ab9ba3;
+	border-bottom-right-radius: 4px;
+/* 	position: fixed; */
+}
+
+.mySideNav>.siteName {
+	height: 68px;
+	line-height: 70px;
+	margin-left: -12px;
+	font-size: 38px;
+	text-indent: 20px;
+}
+
+#publicChannels.mySideNav {
+	color: #ab9ba3;
+	float: left;
+	text-decoration: none;
+	width: 250px;
+	background: #4e324b;
+	border-top: 1 px solid #ab9ba3;
+	font-size: 20px;
+		
+}
+
+#privateChannels.mySideNav {
+	color: #ab9ba3;
+	float: left;
+	text-decoration: none;
+	width: 250px;
+	background: #4e324b;
+	border-top: 1px solid #ab9ba3;
+	border-bottom: 1px solid #ab9ba3;
+	font-size: 20px;
+}
+
+#privateChannels.mySideNav li {
+	line-height: 40px;
+	text-indent: 20px;
+	margin-left: -10px;
+	height: 40px;
+}
+
+#publicChannels.mySideNav li {
+	line-height: 40px;
+	text-indent: 20px;
+	margin-left: -10px;
+	height: 40px;
+}
+
+/**** styling the buttons next to each channel ****/
+
+#addIcon {
+	background-image: url( 'images/create4.png' );
+	background-size: 20px 20px;
+	height: 20px;
+	width: 20px;
+	background-repeat: no-repeat;
+	background-color: transparent;
+	border: none;
+	padding-top : 23px;
+	margin-left: -20px;
+}
+
+#addIcon:focus {
+	outline: none;
+}
+
+#addIcon:hover {
+	opacity: 0.5;
+}
+
+#addIcon:active {
+	border: none;
+	box-shadow: 0;
+}
+
+#AddChannel {
+	margin-left: 180px;
+	margin-top: -30px;
+}
+
+
+
+#allChannelButtons {
+	float: left;
+	width: 23%;
+  	padding-top: 11px; 
+}
+
+#deleteIcon {
+	background-image: url( 'images/delete3.png' );
+	background-size: 15px 15px;
+	height: 15px;
+	width: 15px;
+	background-repeat: no-repeat;
+	background-color: transparent;
+	border: none;
+	position:relative;
+	float:left;
+}
+
+#deleteIcon:focus {
+	outline: none;
+}
+
+#deleteIcon:hover {
+	opacity: 0.5;
+	background-color: #ffffff;
+}
+
+#mentionIcon {
+/* 	display:none; */
+	background-image: url( 'images/mentionIcon.png' );
+	background-size: 15px 15px;
+	height: 15px;
+	width: 15px;
+	margin-left: 2px;
+/* 	color: #b95977; */
+	background-repeat: no-repeat;
+	background-color: transparent;
+	border: none;
+	float: left;
+	cursor: default;
+/* 	font-size: 14px; */
+	
+}
+
+
+#mentionIcon:focus {
+	outline: none;
+}
+
+
+#mentionIcon:hover {
+	color: #b95977;
+	background-color: #ffffff;
+}
+
+#unreadIcon {
+
+	padding-left: 0px;
+	color: #4c9689;
+	background-repeat: no-repeat;
+	background-color: transparent;
+	float:left;
+	border-radius: 50%;
+	cursor: default;
+	font-size: 15px;
+	margin-top:	-48%;
+	margin-left: 26%;
+	
+}
+
+
+button.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+#unreadIcon:focus {
+	outline: none;
+}
+
+#unreadIcon:hover {
+	color: #4c9689;
+}
+
+
+/**** styling the channel name inside of each channel ul ****/
+
+
+#mychannelname {
+	float: left;
+	width: 77%;
+	line-height: 30px;
+	text-indent: 20px;
+	margin-left: 0px;
+	color: #ab9ba3;
+}
+
+#mychannelname a {
+	color: #ab9ba3;
+	cursor: pointer;
+}
+
+#mychannelname a:visited {
+	color: #ab9ba3;
+}
+
+#mychannelname a:link {
+	color: #ab9ba3;
+}
+
+#mychannelname a:hover {
+	color: #999999;
+	text-decoration: none;
+}
+
+#mychannelname a:active {
+	color: #ab9ba3;
+	text-decoration: none;
+}
+
+
+/**** styling every channel in the sidenavbar****/
+
+
+#Channels.mySideNav {
+	color: #ab9ba3;
+	float: left;
+	text-decoration: none;
+	width: 250px;
+	background-color: #4e324b;
+	font-size: 11px;
+	word-wrap: break-word;
+	width: 100%;
+}
+
+#Channels.mySideNav:hover {
+	color: #fff;
+	background-color: #ffffff;
+}
+
+
+/****************************************************************** The End Of Navbar Css Style ****************************************************************/
+
+
+
+/*********************************************************** The Start Of Second Page Header Css Style ****************************************************************/
+
+
+
+
+#MyHeader {		/**** styling the header that conatins the search bar and name of the user and the profile picture and the logout ****/
+	background-color: #c8c2ca;
+	padding-left: 0px;
+	margin-left: 0px;
+	overflow: hidden;
+	width: 100%;
+	height: 10%;
+	border-top-right-radius: 0px;
+	border-top-left-radius: 0px;
+	border-bottom-right-radius: 0px;
+	border-bottom-left-radius: 0px;
+}
+
+#MyHeader .mySearchBar {		/*** styling the search bar ***/
+	margin-left: 0.8%;
+	margin-top: 0.7%;
+	width: 50%;
+	height: 100%;
+	float: left;
+	background-color: #fff;
+	border-top-right-radius: 6px;
+	border-top-left-radius: 6px;
+	border-bottom-right-radius: 6px;
+	border-bottom-left-radius: 6px;
+	border: 1px solid gray;
+	box-shadow: 1px 1px 1px #888888;
+}
+
+#MyHeader .mySearchBar:hover{
+	border: 1px solid #8bd0d9;
+}
+
+
+#SearchBar input[type="text"] {
+	width:90%;
+	float:left;
+	}
+
+#SearchIcon{
+	height: 5%;
+	width: 5%;
+	float: left;
+	margin-top: 1.5%;
+	margin-left: 2%;
+}
+
+#SearchIcon img{
+	height: 100%;
+	width: 100%;	
+}
+
+
+#SearchBar input[type="text"]:focus {
+	outline: none;
+}
+
+
+
+/*** styling the name of the user and the profile picture and the logout button ***/
+
+
+
+#MyHeader .myAccount {
+	height: 68px;
+	overflow: hidden;
+	padding-left: 12.2%;
+	padding-top: 0.75%;
+}
+
+
+#accountPicture img {
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+}
+
+#accountNickname {
+	margin-top: -39px;
+	margin-left: 65px;
+	font-size: 20px;
+	word-wrap: break-word;
+	float:left;
+	width:65%;
+	color: #555459;
+}
+
+#accountLogout {
+	margin-top: -39px;
+	margin-left: 310px;
+}
+
+
+#accountLogout button {
+	background-image: url( 'images/logOutIcon.png' );
+	background-size: 89px 30px;
+	height: 30px;
+	width: 89px;
+	background-repeat: no-repeat;
+	background-color: transparent;
+	border: none;
+	position:relative;
+/* 	float:left; */
+}
+
+#accountLogout button:focus {
+	outline: none;
+}
+
+#accountLogout button:hover {
+	opacity: 0.5;
+	background-color: transparent;
+}
+
+#accountLogout a:visited {
+	color: #22623d;
+}
+
+#accountLogout a:link {
+	color: #22623d;
+}
+
+#accountLogout a:hover {
+	color: #4d9e6f;
+	text-decoration: none;
+}
+
+#accountLogout a:active {
+	color: #22623d;
+	text-decoration: none;
+}
+
+
+/*************************************************** The Start Of Second Page Header Css Style ****************************************************************/
+
+
+
+/*************************************************** The Start of Result of The Search ************************************************************************/
+
+
+#divCheckBox2 {					/*** divCheckBox2 is the div that appears when we press in the search text and search for some public channel ***/
+	width: 41.3%;				/** it contains the search results all styled later on this part **/
+	border: 1px solid gray;
+	display: none;
+	height = auto;
+	max-height: 70%;
+	position: fixed;
+	margin-top: 0px;
+	margin-left: 10px;
+	overflow-y: auto;
+	overflow-x: hidden;
+	background-color: white;
+	border-top-right-radius: 0px;
+	border-bottom-right-radius: 0px;
+	border-top-left-radius: 0px;
+	border-bottom-left-radius: 0px;
+	word-wrap: break-word; 
+	box-shadow: 1px 1px 1px #888888;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+
+
+
+#TheSearchResult{
+	padding-left: 10px;
+	padding-top: 10px;
+	border-bottom: 0.8px solid #a4e1d6;
+}
+
+#TheSearchResult:hover{
+	background-color: #f9f9f9;
+}
+
+#secondaryText{
+	color: #807a7c;
+}
+
+
+
+#mySubscription {					/**** this is the button that we press in order to subscribe to a channel ****/
+	background-image: url( 'images/subscribeIcon2.png' );
+	background-size: 100px 28px;
+	height: 28px;
+	width: 100px;
+	background-repeat: no-repeat;
+	background-color: transparent;
+	border: none;
+	position:relative;
+	font-size: 20px;
+}
+
+
+#mySubscription:focus {
+	outline: none;
+}
+
+#mySubscription:hover {
+	opacity: 0.78;
+}
+
+
+#myunSubscription {
+	background-image: url( 'images/unsubscribeIcon2.png' );
+	background-size: 100px 28px;
+	height: 28px;
+	width: 100px;
+	background-repeat: no-repeat;
+	background-color: transparent;
+	border: none;
+	position:relative;
+	font-size: 20px;
+}
+
+
+#myunSubscription:focus {
+	outline: none;
+}
+
+#myunSubscription:hover {
+	opacity: 0.78;
+}
+
+
+#myunSubscription2 {
+	background-image: url( 'images/unsubscribeIcon.png' );
+	background-size: 100px 28px;
+	height: 28px;
+	width: 100px;
+	background-repeat: no-repeat;
+	background-color: transparent;
+	border: none;
+	position:relative;
+	font-size: 20px;
+}
+
+
+#myunSubscription2:focus {
+	outline: none;
+}
+
+#myunSubscription2:hover {
+	opacity: 0.78;
+}
+
+
+
+#myUnSubscription:focus {
+	outline: none;
+}
+
+#myUnSubscription:hover {
+	opacity: 0.78;
+}
+
+
+#emptySearchResult{						/*** styling the div that shows when there is no search results  ***/
+	width: 41.3%;
+	border: 1px solid gray;
+	display: none;
+	height: 10%;
+	position: fixed;
+	margin-top: 0px;
+	margin-left: 10px;
+	overflow-y: auto;
+	overflow-x: hidden;
+	background-color: white;
+	border-top-right-radius: 0px;
+	border-bottom-right-radius: 0px;
+	border-top-left-radius: 0px;
+	border-bottom-left-radius: 0px;
+	word-wrap: break-word; 
+	box-shadow: 1px 1px 1px #888888;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+
+#noSearchResult{
+	padding-top: 2%;
+	padding-left: 30%;
+	font-size: 20px;
+	opacity: 0.2;
+}
+
+#noSearchResult img{
+	height:8%;
+	width:8%;
+	float:left;
+}
+
+#noSearchResultContent{
+	float:left;
+	padding-left: 5%;
+	padding-top: 2%;
+}
+
+/************************************************************* The End of Result of The Search **********************************************************************/
+
+
+
+/************************************************************* The Start of Greeting ********************************************************************************/
+/*** styling the first page that appears a sec after you log in, the greeting div, it has a logo, greeting, some introduction and a lovely Emoji***/
+
+#greetingDiv {
+	margin-left: 15%;
+/* 	display: none; */
+	color: #555459;
+	width: 51.5%;
+/* 	border-right: 1px solid gray; */
+	height: 90%;
+	position: fixed;
+	overflow-y: hidden;
+	overflow-x: hidden;
+	background-color: #ffffff;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	
+}
+
+#LogoDiv{
+	height: 40%;
+	width: 40%;
+	margin-top: 10%;
+	margin-left: 10%;
+	float: left;
+	
+}
+
+#LogoDiv img{
+	height: 100%;
+	width: 100%;	
+}
+
+
+#WelcomeDiv{
+	margin-top: 16%;
+	margin-left: 53%;
+	font-size: 60px;
+	
+}
+
+#SiteNameDivG{
+	font-size: 60px;
+}
+
+#IntroductionDiv{
+	margin-top: 12%;
+	margin-left: 0%;
+	font-size: 30px;
+	text-align: center;
+}
+
+#EnjoyYourStay{
+	margin-top: 9%;
+	margin-left: 27%;
+	font-size: 40px;
+	text-align: center;
+	float:left;
+}
+
+#EmojiDiv{
+
+	height: 10%;
+	width: 10%;
+	margin-top: 10%;
+	margin-left: 2%;
+	float: left;
+}
+
+#EmojiDiv img{
+	height: 70%;
+	width: 62%;
+}
+
+
+/************************************************************************** The End of Greeting *****************************************************************/
+
+
+
+/************************************************************************** The Start of The Chat Area **********************************************************/
+/*** here we are styling the chat area, this div is divided into two main divs, the first one is the MyChatBox , this div contains all the messages ***/
+/*** the second one is MyChatText , this div contains all the text where you can write a message and send it using a button ***/
+
+
+#mychatarea {
+	
+	float:left;
+	display: none;
+	overflow-y: hidden;
+	overflow-x: hidden;
+	background-color: #ffffff;
+	color: #555459;
+	width: 51.5%;
+	border-right: 1px solid gray;
+	height: 90.1%;
+	position: fixed;
+	overflow-y: hidden;
+	overflow-x: hidden;
+	background-color: #ffffff;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+
+
+
+#MyChatBox {
+	margin-left: 0;
+	margin-top: 0%;
+	height: 91.7%;
+	overflow-y: auto;
+	background-color: #ffffff;
+	width: 100%;
+	overflow-x: hidden;
+}
+
+#chatareaGreeting{
+
+}
+
+
+
+#messageBox {
+	
+	height: auto;
+	font-size: 12px;
+	word-wrap: break-word;
+	white-space: wrap;
+	border-bottom: 0.8px solid #a4e1d6;
+	background-color: white;
+}
+
+
+
+#MyChatBox h2 {
+	word-wrap: break-word;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	text-align: center;
+	
+}
+
+#MyChatText {
+	margin-left: 0;
+	margin-top: 0%;
+	height: 8.3%;
+	border-top: 1px solid gray;
+	overflow-y: auto;
+	background-color: #ffffff;
+	overflow-y: hidden;
+	width: 100%;
+	float: left; 
+	border-bottom-right-radius: 6px;
+	opacity: 1;
+}
+
+#MyChatText:hover{
+	border-top: 1px solid #8bd0d9;
+}
+
+#MyChatText input[type="text"] {
+	height: 18%;
+	width: 85%;
+	border-radius: 6px;
+	display: inline-block;
+	margin-left: 3%;
+	margin-top: 2.2%;
+	box-shadow: none;
+	background-color: transparent;
+	opacity: 1;
+	border: none;
+	float:left;
+}
+
+
+
+#MyChatText input[type="text"]:focus {
+	outline: none;
+}
+
+
+
+#submitMsgText {
+	background-image: url( 'images/airPlane.png' );
+	background-size: 40px 30px;
+	height: 30px;
+	width: 40px;
+	background-repeat: no-repeat;
+	background-color: transparent;
+	border: none;
+	position:relative;
+	float:left;
+	margin-top:-1%;
+	margin-left:2%;
+}
+
+#submitMsgText:focus {
+	outline: none;
+}
+
+#submitMsgText:hover {
+	opacity: 0.5;
+	background-color: #ffffff;
+}
+
+
+/*********************************************************** The End of The Chat Area ******************************************************************************/
+
+
+
+/*********************************************************** The Start of The Message itself ***********************************************************************/
+/**** this part is contained in the previous part, because here we are styling the message itself inside MyChatBox ****/
+/**** the message itself is divided into 4 parts, the nickname of the user, the date and time, the content, and the reply button****/
+
+
+#MessageItselfContainer:hover{
+	background-color: #f9f9f9;
+}
+
+#MessageUserName{
+	float:left;
+}
+
+#MessageUserName a {
+	color: #5c9f93;
+	cursor: pointer;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+
+#MessageUserName a:visited {
+	color: #5c9f93;
+}
+
+#MessageUserName a:link {
+	color: #5c9f93;
+}
+
+#MessageUserName a:hover {
+	color: #5c9f93;
+	text-decoration: none;
+}
+
+#MessageUserName a:active {
+	color: #5c9f93;
+	text-decoration: none;
+}
+
+
+#UserNamemsgImage{
+	width: 50px;
+	height: 50px;
+}
+
+#MessageTimeStamp{
+	margin-top: 0.4%;
+	margin-left: 3%;
+	float:left;
+	color: #9e9ea6;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+
+#MessageContentDiv{
+	margin-top: -2.1%;
+	margin-left: 20%;
+	width: 72%;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+
+#ReplyToMessageBtn{
+	display: none;
+	background-image: url( 'images/ReplyIcon.png' );
+	background-size: 30px 30px;
+	height: 30px;
+	width: 30px;
+	background-repeat: no-repeat;
+	background-color: transparent;
+	border: none;
+	margin-left: 95%;
+	margin-top: -7.3%;
+	float:left;
+	
+	
+}
+
+#theHoverText{
+	margin-top: 5%;
+	margin-left:40%;
+	z-index: 99999999999 !important;
+	position: relative;
+	border:solid 0.5px gray;
+	background-color: #479386;
+	width:12.5%;
+	padding-left:1%;
+	border-radius: 6px;
+}
+
+#ReplyToMessageBtn:focus {
+	outline: none;
+}
+
+#ReplyToMessageBtn:hover {
+	opacity: 0.8;
+}
+
+/**************************************************************** The End of The Message itself **********************************************************************/
+
+<!--
+******************** SEARCH -->
+#SearchBar {
+	padding: 3px;
+	border: solid 1px #E4E4E4;
+	border-radius: 6px;
+	background-color: none;
+}
+
+#SearchBar input {
+	border: 0;
+	box-shadow: none;
+	background-color: transparent;
+	opacity: 1;
+}
+
+
+
+/* SEARCH */
+.mySideNav button {
+	horizontal-align: top;
+	vertical-align: top;
+}
+
+
+
+
+/******************************************************** The Start of The Channel Creation Div ****************************************************************/
+/***** we are styling the div that appears when we press on the add button next to  "public channels" in the side nav *****/
+/**** this div contains a text area for channel name and description, and also two button: one for confirm creation the other for canceling ****/
+/**** is also has a place where there can be alerts; if the channel name exits or missed required fields****/
+
+
+#CreateChannelBox {
+
+	width: 30%;
+	border: 1px solid gray;
+	display: none;
+	height: 37%;
+	position: fixed;
+	overflow-y: auto;
+	overflow-x: hidden;
+	background-color: white;
+	border-top-right-radius: 0px;
+	border-bottom-right-radius: 0px;
+	border-top-left-radius: 0px;
+	border-bottom-left-radius: 0px;
+	word-wrap: break-word; 
+	box-shadow: 1px 1px 1px #888888;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+
+#ChannelName {
+	padding-top: 6%;
+	padding-left: 16%;
+	font-size: 15px;
+}
+
+#insertName {
+	padding-left = 20px;	
+}
+
+#insertName input {
+	height: 30%;
+	width: 80%;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	display: inline-block;
+}
+
+#insertName input[type="text"] {
+	color: black;
+}
+
+#ChannelDescription {
+	padding-top: 3%;
+	padding-left: 16%;
+	font-size: 15px;
+}
+
+#insertDesc textarea {
+	height: 60%;
+	width: 80%;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	display: inline-block;
+}
+
+#submitCreation {
+	padding-top: 3.4%;
+	padding-left: 16%;
+}
+
+#submitCreation button {
+
+	font-size: 15px;
+	text-align: center;
+	height: 100%;
+	width:20%;
+	color: #ffffff;
+	background-color: #22623d;
+	border: none;
+	border-radius: 5px;
+	padding-top:1%;
+	padding-bottom:1%;
+	
+}
+
+#submitCreation button:hover {
+	opacity: 0.8;
+}
+
+#submitCreation button:focus {
+	outline: none;
+}
+
+#CancelCreation {
+	padding-left: 10px;
+}
+
+#CancelCreation button {
+	background-color: #863135;
+}
+
+#CancelCreation button:hover {
+	opacity: 0.8;
+}
+
+
+#ChannelCreationAlert{
+	
+	padding-top: 2.6%;
+	color:red;
+}
+
+
+/******************************************************************* The End of The Channel Creation Div *********************************************************/
+
+
+/******************************************************************** Start of The Reply Box *********************************************************************/
+/***** this part is similar to mychatarea div above, this div conatins 3 main divs, the first one is: mainMessages, this div conatins the current message****/
+/**** that we are replying to it in the reply area. the second div is the div that conatins all the replies and its name is theReplies. ****/
+/*** the third div is the myReplyText that contains the text area where you can write your reply and send it using a button ***/
+
+#replyArea {
+	display:none;
+	width: 31%;
+	float:left;
+	margin-left: 51.5%;
+
+	overflow-y: hidden;
+	overflow-x: hidden;
+	background-color: #ffffff;
+	color: #555459;
+
+	border-left: 1px solid gray;
+	height: 90.1%;
+	position: fixed;
+	overflow-y: hidden;
+	overflow-x: hidden;
+	background-color: #ffffff;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+
+#myReplyBox{
+	height: 91.7%;
+}
+
+
+#headerReply{
+	padding-top:1.7%;
+	height:12%;
+	border-bottom: 0.8px solid #e6e5e5;
+}
+
+#threadBox{
+	font-size:40px;
+	margin-left: 0%;
+	margin-top: 0;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	text-align:center;
+}
+
+
+#threadBoxbtn{
+	
+	margin-left:85%;
+	margin-top: -11.1%;	
+}
+
+
+#backwardButton{
+	
+	background-image: url( 'images/backIcon.png' );
+	background-size: 35px 35px;
+	height: 35px;
+	width: 35px;
+	background-repeat: no-repeat;
+	background-color: transparent;
+	border: none;
+}
+
+#threadBoxbtn button:focus {
+	outline: none;
+}
+
+#threadBoxbtn button:hover {
+	opacity: 0.8;
+}
+
+
+#mainMessages{
+	padding-top:3%;
+	padding-left: 3%;
+	height: 19%;
+	overflow-y: auto;
+	width: 100%;
+	overflow-x: hidden;
+	font-size: 12px;
+	word-wrap: break-word;
+	white-space: wrap;
+	border-bottom: 0.8px solid #e6e5e5;
+}
+
+#mainMessagesHide{
+	display: none;
+	padding-top:3%;
+	padding-left: 3%;
+	height: 19%;
+	overflow-y: auto;
+	width: 100%;
+	overflow-x: hidden;
+	font-size: 12px;
+	word-wrap: break-word;
+	white-space: wrap;
+	border-bottom: 0.8px solid #e6e5e5;
+}
+
+
+#replyingto_user{
+	color: #5c9f93;
+}
+
+#replyingto_user a {
+	color: #5c9f93;
+	cursor: pointer;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+
+#replyingto_user a:visited {
+	color: #5c9f93;
+}
+
+#replyingto_user a:link {
+	color: #5c9f93;
+}
+
+#replyingto_user a:hover {
+	color: #5c9f93;
+	text-decoration: none;
+}
+
+#replyingto_user a:active {
+	color: #5c9f93;
+	text-decoration: none;
+}
+
+
+#replyingto_user span{
+	color: #9e9ea6;
+	padding-left: 2%;
+}
+
+#replyingto_message{
+	padding-top:1.4%;
+	padding-left:3%;
+}
+
+#theReplies{
+	padding-top:3%;
+	padding-left: 3%;
+	height: 69%;
+	overflow-x:hidden;
+	width:100%;
+	overflow-y: auto;
+	
+}
+
+
+
+#MyReplyText {
+	margin-left: 0;
+	margin-top: 0%;
+	height: 8.3%;
+	border-top: 1px solid gray;
+	overflow-y: auto;
+	background-color: #ffffff;
+	overflow-y: hidden;
+	width: 100%;
+	float: left; 
+	opacity: 1;
+}
+
+#MyReplyText:hover {
+	border-top: 1px solid #8bd0d9;
+}
+
+
+#MyReplyText input[type="text"] {
+	height: 8.7%;
+	width: 81%;
+	border-radius: 6px;
+	display: inline-block;
+	padding-left:3.5%;
+	padding-top:3.5%;
+	box-shadow: none;
+	background-color: transparent;
+	opacity: 1;
+	border: none;
+	float:left;
+}
+
+
+#MyReplyText input[type="text"]:focus {
+	outline: none;
+}
+
+
+
+
+#submitRlyText {
+	background-image: url( 'images/airPlane.png' );
+	background-size: 40px 30px;
+	height: 30px;
+	width: 40px;
+	background-repeat: no-repeat;
+	background-color: transparent;
+	border: none;
+	position:relative;
+	float:left;
+	margin-top:-2%;
+	margin-left:2%;
+}
+
+#submitRlyText:focus {
+	outline: none;
+}
+
+#submitRlyText:hover {
+	opacity: 0.5;
+	background-color: #ffffff;
+}
+
+
+
+
+
+
+#ReplyItselfContainer:hover{
+	background-color: #f9f9f9;
+	width:100%;
+}
+
+#ReplyUserName{
+	float:left;
+}
+
+#ReplyUserName a {
+	color: #5c9f93;
+	cursor: pointer;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+
+#ReplyUserName a:visited {
+	color: #5c9f93;
+}
+
+#ReplyUserName a:link {
+	color: #5c9f93;
+}
+
+#ReplyUserName a:hover {
+	color: #5c9f93;
+	text-decoration: none;
+}
+
+#ReplyUserName a:active {
+	color: #5c9f93;
+	text-decoration: none;
+}
+
+
+#UserNamerlyImage{
+	width: 50px;
+	height: 50px
+}
+
+#ReplyTimeStamp{
+	padding-top: 0.2%;
+	padding-left: 2%;
+	float:left;
+	color: #9e9ea6;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	font-size: 12px;
+}
+
+#ReplyContentDiv{
+	margin-top:-2%;
+	padding-left: 20%;
+	width: 72%;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+
+#ReplyToReplyBtn{
+	display: none;
+	background-image: url( 'images/ReplyIcon.png' );
+	background-size: 19px 19px;
+	height: 19px;
+	width: 19px;
+	background-repeat: no-repeat;
+	background-color: transparent;
+	border: none;
+	margin-left: 95%;
+	margin-top: -11%;
+	float:left;
+	
+	
+}
+
+
+#ReplyToReplyBtn:focus {
+	outline: none;
+}
+
+#ReplyToReplyBtn:hover {
+	opacity: 0.8;
+}
+
+
+
+
+
+/******************************************************************** End of The Reply Box *****************************************************************/
+
+
+
+
+/******************************************************************** Start of the Description of channel Div **********************************************/
+/****** this div appears next to each channel that shows the info of its channel ******/
+
+#ChannelDescriptionDiv {
+	display:none;
+	width: 31%;
+	float:left;
+	margin-left: 51.5%;
+
+	overflow-y: hidden;
+	overflow-x: hidden;
+	background-color: #ffffff;
+	color: #555459;
+
+	border-left: 1px solid gray;
+	height: 90.1%;
+	position: fixed;
+	overflow-y: hidden;
+	overflow-x: hidden;
+	background-color: #ffffff;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+
+#ChannelDescriptionDivContent{
+	padding-left: 5%;
+	padding-top: 5%;
+	border-bottom: 0.8px solid #cdd1d0;
+}
+
+
+/**************************************************************************** End of the Description of channel Div *******************************************/
+
+/******** divs that werent used for styling puposes *********/
+
+#hiddenName {
+	display: none;
+}
+
+#hiddenName2 {
+	display: none;
+}
+
+#cantReplyWhenNotSubscribe {
+	position: fixed;
+	color: red;
+	margin-left: 70%;
+	margin-top: 10%;
+	display: none;
+}
+
+/********* *********/
+
+/******************************************************************************** END OF STYLES.CSS **************************************************************/
